@@ -1,0 +1,1 @@
+# Logica donde encuentra la creación y el manejo de errores de los archivos
