@@ -1,10 +1,9 @@
-# main.py
 
-from menu.menu import menu_mostrar
+from menu.menu import menu
 
 def main():
-    menu_mostrar()
+    menu()
 
-# Press the green button in the gutter to run the script.
+
 if __name__ == '__main__':
     main()
