@@ -1,6 +1,9 @@
 colaboradores = {}
 
 def registrar_colaborador(codigo, nombre, clave, posicion):
+    if codigo in colaboradores:
+        print(f"El código {codigo} ya está registrado.")
+        return
     colaboradores[codigo] = {
         'nombre': nombre,
         'clave': clave,
