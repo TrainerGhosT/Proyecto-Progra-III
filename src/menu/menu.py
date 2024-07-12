@@ -33,7 +33,7 @@ def menu():
 
         elif opcion == '2':
             codigo = input("Ingrese el código del colaborador: ")
-            dia = int(input("Ingrese el día de la semana (0-5): "))
+            dia = int(input("Ingrese el día de la semana (0(lunes) - 5(sábado)): "))
             horas_trabajadas = int(input("Ingrese las horas trabajadas: "))
             registrar_horas(codigo, dia, horas_trabajadas)
 
