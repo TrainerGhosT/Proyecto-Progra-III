@@ -28,14 +28,22 @@ def menu():
             codigo = input("Ingrese el código del colaborador: ")
             nombre = input("Ingrese el nombre del colaborador: ")
             clave = input("Ingrese la clave del colaborador: ")
-            posicion = int(input("Ingrese la posición del colaborador en la matriz: "))
-            registrar_colaborador(codigo, nombre, clave, posicion)
+            try:
+                posicion = int(input("Ingrese la posición del colaborador en la matriz: "))
+                registrar_colaborador(codigo, nombre, clave, posicion)
+            except ValueError:
+                print ("La posicion debe ser un numero entero")
 
         elif opcion == '2':
             codigo = input("Ingrese el código del colaborador: ")
-            dia = int(input("Ingrese el día de la semana (0(lunes) - 5(sábado)): "))
-            horas_trabajadas = int(input("Ingrese las horas trabajadas: "))
-            registrar_horas(codigo, dia, horas_trabajadas)
+            try:
+                dia = int(input("Ingrese el día de la semana (0(lunes) - 5(sábado)): "))
+                if dia < 0 or dia > 5:
+                    raise ValueError ("Dia incorrecto, ingrese un valor entre 0 y 5")
+                horas_trabajadas = int(input("Ingrese las horas trabajadas: "))
+                registrar_horas(codigo, dia, horas_trabajadas)
+            except ValueError as ex:
+                print(f"Error: {ex}")
 
         elif opcion == '3':
             calcular_salarios()
@@ -71,5 +79,8 @@ def menu():
 
         elif opcion == '8':
             break
+
+        else:
+            print("Opción no valida")
 
 
