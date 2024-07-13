@@ -6,8 +6,13 @@ from archivos.generar_archivo import escribir_empleados, escribir_horas, leer_em
 
 planilla_generada = False
 
+def convertir_horas_decimales(horas_decimales):
+    horas = int(horas_decimales)
+    minutos = int((horas_decimales - horas) * 60)
+    return horas, minutos
+
 def menu():
-    verificar_carpeta_data()  # Aseguramos que la carpeta data existe al iniciar el programa
+    verificar_carpeta_data()  # Asegurar que la carpeta data existe al iniciar el programa
 
     global planilla_generada
 
@@ -40,8 +45,9 @@ def menu():
                 dia = int(input("Ingrese el día de la semana (0(lunes) - 5(sábado)): "))
                 if dia < 0 or dia > 5:
                     raise ValueError ("Dia incorrecto, ingrese un valor entre 0 y 5")
-                horas_trabajadas = int(input("Ingrese las horas trabajadas: "))
-                registrar_horas(codigo, dia, horas_trabajadas)
+                entrada = input("Ingrese la hora de entrada(HHMM):")
+                salida = input ("Ingrese la hora de salida(HHMM):")
+                registrar_horas(codigo, dia, entrada, salida)
             except ValueError as ex:
                 print(f"Error: {ex}")
 
@@ -64,13 +70,19 @@ def menu():
                 escribir_horas()
                 print("Datos escritos en archivo con éxito.")
 
-        elif opcion == '6':
+        elif opcion == '6': #modifique esta opcion para sea mas legible la cantidad de horas que se trabajaron ordinaria y extraordinaria
             colaboradores = leer_empleados()
             leer_horas(colaboradores)
             for codigo, datos in colaboradores.items():
                 print(f"Colaborador: {datos['nombre']}")
-                print(f"Horas ordinarias: {sum(min(h, 4) for h in datos['horas'])}")
-                print(f"Horas extraordinarias: {sum(max(0, h - 4) for h in datos['horas'])}")
+                horas_ordinarias_dec = sum(min(h, 4) for h in datos['horas'])
+                horas_extraordinarias_dec = sum(max(0, h - 4) for h in datos['horas'])
+                
+                horas_ordinarias, minutos_ordinarios = convertir_horas_decimales(horas_ordinarias_dec)
+                horas_extraordinarias, minutos_extraordinarios = convertir_horas_decimales(horas_extraordinarias_dec)
+
+                print(f"Horas ordinarias: {horas_ordinarias} horas y {minutos_ordinarios} minutos")
+                print(f"Horas extraordinarias: {horas_extraordinarias} horas y {minutos_extraordinarios} minutos")
 
         elif opcion == '7':
             obtener_colaboradores().clear()

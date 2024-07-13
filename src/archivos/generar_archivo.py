@@ -54,7 +54,7 @@ def leer_horas(colaboradores):
         for line in file:
             partes = line.strip().split(',')
             codigo = partes[0]
-            horas = list(map(int, partes[1:]))
+            horas = list(map(float, partes[1:])) #cambie el int a float porque aveces pueden haber horas decimales
             if codigo in colaboradores:
                 colaboradores[codigo]['horas'] = horas
 
