@@ -6,7 +6,7 @@ def generar_reporte():
     salarios_brutos, deducciones, salarios_netos = calcular_salarios()
 
     print ("Reporte de planilla")
-    print ("="*30) #multiplica el "=" 30 veces, para hacer un separador jaja
+    print ("="*30) #multiplica el "=" 30 veces, para hacer un separador 
 
     for codigo, datos in colaboradores.items():
         nombre = datos ["nombre"]

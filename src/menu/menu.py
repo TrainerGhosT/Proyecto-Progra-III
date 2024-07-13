@@ -78,6 +78,7 @@ def menu():
                 horas_ordinarias_dec = sum(min(h, 4) for h in datos['horas'])
                 horas_extraordinarias_dec = sum(max(0, h - 4) for h in datos['horas'])
                 
+                #conversion decimal-horas y minutos
                 horas_ordinarias, minutos_ordinarios = convertir_horas_decimales(horas_ordinarias_dec)
                 horas_extraordinarias, minutos_extraordinarios = convertir_horas_decimales(horas_extraordinarias_dec)
 

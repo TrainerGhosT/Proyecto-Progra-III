@@ -2,6 +2,7 @@ from registros.colaboradores import obtener_colaboradores
 
 def calcular_horasTrabajadas(entrada, salida):
         try:
+            #extraer dos numeros
             entrada_horas = int(entrada[:2])
             entrada_minutos = int(entrada[2:])
             salida_horas = int(salida[:2])
@@ -16,6 +17,7 @@ def calcular_horasTrabajadas(entrada, salida):
             if total_salida < total_entrada:
                 raise ValueError ("La hora de salida no puede ser anterior a la entrada")
 
+            #calcular los min y convertir a horas
             total_minutosTrabajados = total_salida - total_entrada
             horas_trabajadas = total_minutosTrabajados/60.0
             return horas_trabajadas
