@@ -31,7 +31,7 @@ def registrar_horas(codigo, dia, entrada, salida):
         try:
             horas_trabajadas = calcular_horasTrabajadas(entrada, salida)
             colaboradores[codigo]["horas"][dia] = horas_trabajadas
-            print(f"Horas registradas para {colaboradores[codigo]["nombre"]}")
+            print(f"Horas registradas para {colaboradores[codigo]['nombre']}")
         except ValueError as ex:
             
             print(f"Error en el calculo de horas {ex}")
